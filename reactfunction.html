@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- BABEL:jsx문법 사용 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" defer>
+      const rootElement = document.getElementById("root");
+
+      /*       const FrontEnd = function () {
+         return (
+           <>
+             <h3>React</h3>
+             <div>function</div>
+           </>
+         );
+       };
+       const element = FrontEnd(); */
+      /* const element = (
+         <>
+           {FrontEnd()}
+           {FrontEnd()}
+           {FrontEnd()}
+         </>
+       ); */
+      /*   const FrontEnd = function (subject, syntax) {
+         return (
+           <>
+             <h3>{subject}</h3>
+             <div>{syntax}</div>
+           </>
+         );
+       }; */
+      ////화살표함수로변형
+      /*       const FrontEnd = (subject, syntax) => {
+         return (
+           <>
+             <h3>{subject}</h3>
+             <div>{syntax}</div>
+           </>
+         );
+       }; */
+
+      /*  const FrontEnd = (subject, syntax) => (
+         <>
+           <h3>{subject}</h3>
+           <div>{syntax}</div>
+         </>
+       ); */
+      //   const element = FrontEnd("React!!", "component");
+      /*  const element = (
+         <>
+           {FrontEnd("HTML5", "tag")}
+           {FrontEnd("CSS3", "style")}
+           {FrontEnd("React", "javascript")}
+         </>
+       ); */
+
+      const FrontEnd = ({ subject, syntax }) => (
+        <>
+          <h3 className="title">{subject} </h3>
+          <div>{syntax}</div>
+        </>
+      );
+      /*  const FrontEnd = (props) => (
+        <>
+          <h3 className="title">{subject} </h3>
+          <div>{syntax}</div>
+        </>
+      ); */
+      const element = (
+        <>
+          <FrontEnd subject="HTML5" syntax="tag" />
+          <FrontEnd subject="CSS3" syntax="style" />
+          <FrontEnd subject="React" syntax="javascript" />
+        </>
+      );
+
+      ReactDOM.render(element, rootElement);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
