@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- BABEL:jsx문법 사용 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" defer>
+      const rootElement = document.getElementById("root");
+
+      /* const MyComponent = ( ) =>{
+          return(
+            <h1>hello,React</h1>
+          )
+        } */
+      /* class MyComponent extends React.Component {
+        render() {
+          return <h1>hello,React</h1>;
+        }
+      } */
+      /* function Greet(props) {
+        return <h1>{props.greet}React</h1>;
+      }
+      Greet.defaultProps = {
+        greet: "Hi~~",
+      }; */
+      //props 는 컴포넌트 외부에서 컴포넌트를 사용할때 넘겨주는 데이터 => props의 객체 데이터 형식으로 넘겨줌
+      //static: 컴포넌트 내부에서 변경할 수 있는 컴포넌트 내부의 값 = > 새로운 값을 생성
+      //외부에서 값주려면 static 써야함
+      class Greet extends React.Component {
+        render() {
+          return <h1>{this.props.greet}React</h1>;
+        } //render
+        static defaultProps = {
+          greet: "Hello~",
+        };
+      }
+      ReactDOM.render(<Greet />, rootElement);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
