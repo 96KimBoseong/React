@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- BABEL:jsx문법 사용 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" defer>
+      const rootElement = document.getElementById("root");
+
+      /* class MyEvent extends React.Component {
+        state = {
+          message: "",
+        };
+
+        handleChange = (e) => {
+          this.setState({
+            message: e.target.value,
+          });
+        };
+        handleClick = () => {
+          alert(this.state.message);
+          this.setState({
+            message: "",
+          });
+        };
+        render() {
+          return (
+            <div>
+              <h1>Event</h1>
+              <input type="text" name="message" placeholder="텍스트입력" value={this.state.message} onChange={this.handleChange} />
+              <button onClick={this.handleClick}>button</button>
+            </div>
+          );
+        }
+      } */
+
+      class MyEvent extends React.Component {
+        state = {
+          userId: "",
+          message: "",
+        };
+
+        handleChange = (e) => {
+          this.setSate({
+            [e.target.name]: e.target.value,
+          }); //[]로 감싸면서 내부 값이 가리키는 실제 값 key값으로 사용된다.
+        };
+        /* const name = 'key'
+           const object = {
+           [name]:value
+           실제결과 [key:value]
+        } */
+        handleClick = () => {
+          alert(this.state.userId + ":" + this.state.message);
+          this.setState({
+            userId: "",
+            message: "",
+          });
+        };
+        render() {
+          return (
+            <div>
+              <input type="text" name="userId" placeholder="아이디" value={this.state.userId} onChange={this.handleChange} />
+
+              <input type="text" name="message" placeholder="메세지" value={this.state.message} onChange={this.handleChange} />
+
+              <button onClick={this.handleClick}>button</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyEvent />, rootElement);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

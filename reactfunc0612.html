@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- BABEL:jsx문법 사용 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" defer>
+      const rootElement = document.getElementById("root");
+
+      /* function MyComponent() {
+        const name = "React";
+        return <div className="title">{name}</div>;
+      } */
+
+      /* class MyComponent extends React.component {
+        render() {
+          const name = "JavaScript";
+          return <div className="title">{name}</div>;
+        }
+      } */
+
+      /* class MyComponent extends React.Component {
+        render() {
+          const { MyClass, subject, name } = this.props;
+
+          return (
+            <div>
+              교육과정:{this.props.MyClass}
+              <br />
+              교육과목:{this.props.subject}
+              <br />
+              교육생:{this.props.name}
+            </div>
+          );
+        }
+        static defaultProps = {
+          MyClass: "FrontEnd",
+          subject: "React",
+          name: "student",
+        };
+      } */
+      class Counter extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            count: 0,
+            count02: 1,
+          }; //state는 객체 형태로 사용
+        }
+        render() {
+          const { count, count02 } = this.state;
+
+          return (
+            <div>
+              <h1>{count}</h1>
+              <h2>{count02}</h2>
+              <button
+                onClick={() => {
+                  this.setState({ count: count + 1 }, () => {
+                    this.setState({ count02: count02 + 2 });
+                  });
+                }}
+              >
+                click
+              </button>
+            </div>
+          );
+        }
+      }
+
+      // ReactDOM.render(<MyComponent MyClass="FrontEnd" subject="React" name="Lee" />, rootElement);
+      ReactDOM.render(<Counter />, rootElement);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

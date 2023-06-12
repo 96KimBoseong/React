@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- BABEL:jsx문법 사용 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" defer>
+      const rootElement = document.getElementById("root");
+
+      class Schedule extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {};
+        }
+        render() {
+          return (
+            <div>
+              <span>{this.props.message}</span>
+            </div>
+          );
+        }
+      } //Schedule
+      const messageData = [
+        { id: 1, message: "오늘의일정" },
+        { id: 2, message: "오늘의 정규회의" },
+        { id: 3, message: "점심시간" },
+        { id: 4, message: "클라이언트 미팅" },
+        { id: 5, message: "업무마감" },
+      ];
+
+      let timer;
+
+      class ListSchedule extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            messages: [],
+          };
+        }
+        componentDidMount() {
+          const { messages } = this.state;
+
+          timer = setInterval(() => {
+            if (messages.length < messageData.length) {
+              const index = messages.length;
+              messages.push(messageData[index]);
+              this.setState({
+                messages: messages,
+                //messages :this.state.messages
+              });
+            } else {
+              clearInterval(timer);
+            }
+          }, 1000);
+        }
+        render() {
+          return (
+            <div>
+              {this.state.messages.map((message) => {
+                return <Schedule key={message.Id} message={message.message} />;
+              })}
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<ListSchedule />, rootElement);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
