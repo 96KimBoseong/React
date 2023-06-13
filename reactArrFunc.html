@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- BABEL:jsx문법 사용 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" defer>
+      const rootElement = document.getElementById("root");
+      const season = () => {
+        const name = ["spring", "summer", "autumn", "winter"];
+        const nameList = names.map((name, index) => {
+          return <li key={index}>{name}</li>;
+        });
+        return <ul>{nameList}</ul>;
+      };
+      ReactDOM.render(<season />, rootElement);
+    </script>
+    <script>
+      //const number = [1, 2, 3, 4, 5];
+      //const result = number.map((number) => number * 2);
+      //console.log(result);
+
+      /* const result = number.filter((number) => {
+        return number > 3;
+      }); */ //필터는 리턴문 뒤에 조건문 넣어줘야함 if ㄴㄴ
+
+      //console.log(result);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- BABEL:jsx문법 사용 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" defer>
+      const rootElement = document.getElementById("root");
+
+      const Season = () => {
+        const [names, setNames] = React.useState([
+          { id: 1, season: "spring" },
+          { id: 2, season: "summer" },
+          { id: 3, season: "autumn" },
+          { id: 4, season: "winter" },
+        ]);
+        const [nextId, setNextId] = React.useState(5);
+        const [input, setInput] = React.useState("");
+
+        const handleChange = (e) => setInput(e.target.value);
+        const handleClick = () => {
+          const nextNames = names.concat({
+            id: nextId,
+            season: input,
+          }); //concat배열과 배열을 합칠때 사용합니다
+          setNextId(nextId + 1);
+          setNames(nextNames);
+          setInput("");
+        };
+
+        const nameList = names.map((name) => <li key={name.id}>{name.season}</li>);
+
+        return (
+          <>
+            <input type="text" value={input} onChange={handleChange} />
+            <button onClick={handleClick}>버튼</button>
+            <ul>{nameList}</ul>
+          </>
+        );
+      };
+
+      ReactDOM.render(<Season />, rootElement);
+    </script>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
