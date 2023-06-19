@@ -1,0 +1,13 @@
+.best_section {
+  width: 1300px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.best_section .best {
+  width: 280px;
+  margin: 10px;
+}
+.best_section .best .best_desc {
+  font-size: 12px;
+}

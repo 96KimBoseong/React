@@ -1,0 +1,12 @@
+index.js에 
+임포트 BrowserRouter연결
+
+App태그를 싸고 있는 스크립트모드태그 지우고
+브라우저 라우터태그 안에 App태그
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <BrowserRouter>!
+    <App></App>
+  </BrowserRouter>!
+);
+
