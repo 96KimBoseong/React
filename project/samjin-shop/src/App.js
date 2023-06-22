@@ -1,4 +1,5 @@
 import "./App.css";
+import { ReactDOM } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import data from "./pages/productData";
 import About from "./pages/About";
@@ -7,6 +8,8 @@ import Detail from "./pages/Detail";
 import { Container, Nav, Navbar, Row, Col } from "react-bootstrap";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+//import { Provider } from "react-redux";
+//import store from "./pages/store";
 
 function App() {
   const navigate = useNavigate();
