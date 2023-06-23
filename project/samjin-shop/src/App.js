@@ -1,19 +1,23 @@
 import "./App.css";
 import { ReactDOM } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { connect } from "react-redux";
 import data from "./pages/productData";
 import About from "./pages/About";
 import Detail from "./pages/Detail";
+import Cart from "./pages/Cart";
 
 import { Container, Nav, Navbar, Row, Col } from "react-bootstrap";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-//import { Provider } from "react-redux";
-//import store from "./pages/store";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "./pages/store";
 
 function App() {
   const navigate = useNavigate();
   const [bests] = useState(data);
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   return (
     <div className="App">
       <Navbar bg="dark" data-bs-theme="dark">
@@ -72,6 +76,11 @@ function App() {
                         <h4>{best.title}</h4>
                         <p>{best.desc}</p>
                         <p>{best.price}</p>
+                        <button
+                          onClick={() => {
+                            dispatch(addItem({ id: best.id, title: best.title, price: best.price }));
+                          }}
+                        ></button>
                       </Link>
                     </Col>
                   );

@@ -1,13 +1,16 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { changeName, changeYear } from "./store";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, changeName, changeYear } from "./store";
 
+//
+
+//
 export default function Cart() {
   /* store에 있는 state를 useSelector가 가져오는 역할을 함 */
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+
   return (
     <div>
       <h2>{state.user}님의 장바구니</h2>
@@ -26,12 +29,20 @@ export default function Cart() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
+          {state.cart.map((item, i) => {
+            return (
+              <tr>
+                <td>{state.cart[i].id}</td>
+                <td>{state.cart[i].title}</td>
+                <td>{state.cart[i].count}</td>
+                <td>
+                  <button>+</button>
+                  <button>-</button>
+                  <button>delete</button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </div>

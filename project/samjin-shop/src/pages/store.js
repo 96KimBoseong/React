@@ -21,8 +21,27 @@ const user = createSlice({
     //단일 값일 경우 리턴으로 값을 돌리지만 객체 배열은 가져오는거라 리턴 필요x
   },
 });
+const cart = createSlice({
+  name: "cart",
+  initialState: [],
+  reducers: {
+    addItem(state, action) {
+      //state.push(action, payload);
+      const index = state.findIndex((findId) => {
+        return findId.id === action.payLoad.id;
+      });
+      if (index > -1) {
+        state[index].count++;
+      } else {
+        state.push(action.payLoad);
+      }
+    },
+  },
+});
 
-export const { changeName } = user.actions;
+export const { addItem } = cart.actions;
+
+export const { changeYear, changeName } = user.actions;
 
 export default configureStore({
   reducer: {
